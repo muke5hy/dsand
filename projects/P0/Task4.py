@@ -25,3 +25,25 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
+
+def get_telephone_with_prefix(calls: list) -> list:
+    caller = set()
+    reciever = set()
+    for call in calls:
+        caller.add(call[0])
+        reciever.add(call[1])
+    return list(caller), list(reciever)
+
+
+caller, reciever = get_telephone_with_prefix(calls)
+texter, reciever_txt = get_telephone_with_prefix(texts)
+
+unique_no = list(set(reciever + texter+reciever_txt))
+telemarketer = []
+for n in caller:
+    if n not in unique_no:
+        telemarketer.append(n)
+        
+print("These numbers could be telemarketers: ")
+for tel in sorted(telemarketer):
+    print(tel)

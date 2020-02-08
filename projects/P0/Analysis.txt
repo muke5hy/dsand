@@ -1,0 +1,17 @@
+
+
+Task 0: 
+    This has O(1) as we directly accessing the asked data points. 
+    
+
+Task 1: 
+    This has O(n) as we we are doing one complete loop to create the data. 
+    
+Task 2: 
+    This has O(n) as we we are doing one complete loop to create the data. 
+    
+Task 3: 
+    This has O(n) as we we are doing one complete loop to create the data. 
+    
+Task 4: 
+    This has O(n) as we we are doing one complete loop to create the data. 
