@@ -11,7 +11,7 @@ Task 2:
     This has O(n) as we we are doing one complete loop to create the data. 
     
 Task 3: 
-    This has O(n) as we we are doing one complete loop to create the data. 
+    This has O(n log n) as we we are doing one complete loop to create the data. 
     
 Task 4: 
-    This has O(n) as we we are doing one complete loop to create the data. 
+    This has O(n log n) as we we are doing one complete loop to create the data. 

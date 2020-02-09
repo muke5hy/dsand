@@ -44,41 +44,34 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 
-def get_telephone_with_prefix(calls: list) -> list:
-    caller = set()
-    reciever = set()
-    for call in calls:
-        caller.add(call[0])
-        reciever.add(call[1])
-    return caller, reciever
-
-def get_codes(numbers : set) -> list:
+def get_codes_of_bangalore_caller(calls : set) -> list:
     codes = set()
-    for number in numbers:
-        phone = re.search(r'\((.*?)\)',number)
-        if phone:
-            codes.add(phone.group(1))
-        elif number.startswith('140'):
-            codes.add('140')
-        elif number.startswith(('7','8','9')) and ' ' in number:
-            codes.add(number[:4])
+    
+    for call in calls:
+        if call[0].startswith('(080)'):
+            phone = re.search(r'\((.*?)\)',call[1])
+            if phone:
+                codes.add(phone.group(1))
+            elif call[1].startswith('140'):
+                codes.add('140')
+            elif call[1].startswith(('7','8','9')) and ' ' in call[1]:
+                codes.add(call[1][:4])
       
     print("The numbers called by people in Bangalore have codes:")
     for code in sorted(codes):
         print(code)
 
-def get_percentage(callers: list, recievers: list) -> None:
+def get_percentage(calls: list) -> None:
     total = 0
     both = 0
-    for caller, reciever in zip(callers, recievers):
-        if caller.startswith('(080)'):
+    for call in calls:
+        if call[0].startswith('(080)'):
             total += 1
-            if reciever.startswith('(080)'):
+            if call[1].startswith('(080)'):
                 both += 1
-    
-    percentage = round((both*100)/total, 2)
-    print(f"{percentage} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
+                
+    print(f"{round(both/total*100, 2)} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
-caller, reciever = get_telephone_with_prefix(calls)
-get_codes(caller)
-get_percentage(caller, reciever)
+
+get_codes_of_bangalore_caller(calls)
+get_percentage(calls)

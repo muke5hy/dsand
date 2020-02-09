@@ -13,8 +13,8 @@ with open('calls.csv', 'r') as f:
     calls = list(reader)
 
 
-def get_date_time_from_str(string: str) -> datetime :
-    return datetime.strptime(texts[0][2], '%d-%m-%Y %H:%M:%S')
+# def get_date_time_from_str(string: str) -> datetime :
+#     return datetime.strptime(texts[0][2], '%d-%m-%Y %H:%M:%S')
 """
 TASK 0:
 What is the first record of texts and what is the last record of calls?
@@ -24,10 +24,7 @@ Print messages:
 """
 
 if __name__ == "__main__":    
-    # get first record and print
-    date = get_date_time_from_str(texts[0][2])
-    print(f"First record of texts, {texts[0][0]} texts {texts[0][1]} at time {date.time()}")
-
-    # get second record and print
-    date = get_date_time_from_str(calls[-1][2])
-    print(f"Last record of calls, {calls[-1][0]} calls {calls[-1][1]} at time {date.time()}, lasting {date.time().second} seconds")
+    print('First record of texts, {0} texts {1} at time {2}'.format(*texts[0])) 
+    print('Last record of calls, {0} calls {1} at time {2}, lasting {3} seconds'.format(*calls[-1]))
+    
+    
