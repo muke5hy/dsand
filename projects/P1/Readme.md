@@ -1,0 +1,240 @@
+### Project 1
+
+###### Design
+This program updates the cache with value. It uses a hash map to  track the nodes in a doubly
+linked list. All the values are stored in a doubly linked list. The set() operation instantiates
+a new node in the doubly linked list and produces a key to track the value. The get() operation retrieves
+the value by accessing the hash map. If the key exists, it will remove the linked list node and place it in
+front of the queue. A tail pointer is used to track the least used node, which happens to be the
+final node of the linked list. The head node always points to the most recent new node or the
+recently accessed existing node. If the linked list is at maximum capacity and a new node is created,
+it will remove the tail (least recently used) node and put the new node in front of the linked list (queue).
+
+Two additional methods removeTail and enQueue(node) does a O(1) operations to either
+remove the node from the tail node or perform a move operation of the existing node to the front
+of the doubly linked list (queue).
+
+
+###### Time Complexity
+The time complexity is O(1) operation to get() or set() a value from the lru_cache, as a result of
+using a hash map, whose keys points to the node in the linked list.
+
+
+Time Complexity: O(1)
+
+###### Space Complexity
+The LRU cache stores an element per key in the hash map. Given n-keys, the storage is n-elements, thus space
+is O(n). Since the least used value is always removed and replaced by a new value, the number of elements
+stays constant.
+
+Space complexity: O(n) 
+ 
+ 
+### Project 2
+
+###### Design
+This program asks to find a directory within a tree and return true, if found. False, otherwise.
+The algorithm is to test each item for 'ls -l' status. If it is a directory, it must descend into
+that directory and recurse on this path, again, checking for file, directory or *.c program.
+
+
+###### Time Complexity
+The time complexity can be computed by the number of branches it needs to traverse. The algorithm
+cannot make assumptions or guesses on which subdirectory will have the *.c programs. Therefore,
+given m-subdirectories with n programs, it will test m+n items for either a file, a *.c program or
+a directory. The conditional test for 'ls -l' status is O(1), but the total number of conditional
+tests would be:
+
+(m+n)*O(1) ~ O(m+n), where m - number of subdirectories, n - number of files
+
+Hence, O(n) ~ O(m+n)
+            ~ O(n) 
+
+Time complexity: O(n)
+
+###### Space Complexity
+The space complexity is the list of directories, housing the *.c programs. Therefore, it is simply
+a list of O(n) space.
+
+Space complexity: O(n)
+
+
+
+### Project 3
+
+###### Design
+The huffman code takes a string and converts it into a binary code based on the frequency of each
+character. To this, the algorithm has HeapNode() class construct to store the character value
+and its respective frequency. Another construct, called class HuffmanCode() creates the
+heap tree to store the HeapNode according to frequency weights. It first assigns all
+individual characters with its respective frequency weight into a priority Queue. Then,
+it merges the HeapNodes, taking two at a time and building the Huffman Tree, which is
+essentially a binary tree of nodes. After the tree is completed, the huffman code and decoding
+functions can tranverse the tree and perform the compression and decompression of a
+given text string.
+
+
+###### Time Complexity
+Construction the frequency dictionary take O(n).
+
+Constructing the heap tree takes O(n). To compress, it is literally traversing the tree and
+encoding the text into binary code. Tree traversal for a binary tree is O(nlogn).
+
+Deconstructing the code involves parsing out the coded text which O(n) for each character. However, the lookup
+for the code in the decodes_dict() takes O(1).
+
+Breakdown
+O(nlogn) for tree traversal
+O(n) for dictionary creation: character frequency, code and decode lookups
+O(1) for lookup
+------------------
+
+O(n) + O(nlogn) + O(1)
+O(n)
+
+Time Complexity: O(n)
+     		      
+
+
+###### Space Complexity
+Breakdown
+ O(n) for character frequency lookup, including spaces
+ O(n*k) for code and decode, where k = number of bits to represent the text character
+ O(n) for binary tree to encapsulate all the characters in the text.
+------------
+O(n) + O(n*k) + O(n)
+
+Space Complexity: O(n)
+
+
+### Project 4
+
+
+###### Design
+This program asks if a user is part of a group and returns a boolean, indicating true if user is in group,
+and false otherwise. The program creates tree whose parent includes child nodes. The child node may under
+another parent node.
+
+###### Time Complexity
+Breakdown
+O(1) -         Constructing the graph user by user, which is just appending to the list
+O(1) -	       Getting or retrieving group/user list information will take anywhere between
+               best case lookup of only one retrieval in the list, or O(n) going to the last
+	       item of the list. 
+O(1) to O(n) - Querying if user is in group list may be constant time retrieval - depending if it's
+     	       the only user in the group or user list. However, if it's not found in its most
+	       immediate group, it will check all the other groups' group lists, which the number of groups
+	       can vary. Worst case, it will check all groups to find user in that list.
+----------
+O(n) + O(1) + O(1)
+
+
+
+Time Complexity: O(n) 
+
+
+###### Space Complexity
+The class Group object has two lists: groups and users and just a variable to store the
+user's name. The list can vary by size n items.
+
+O(n) for users
+O(n) for groups
+----------------
+O(n) + O(n)
+
+Some users may overlap in several groups, so the total isn't 2*n. However,
+O(n) + O(n) ~ 2*O(n) ~ O(n)
+
+Space Complexity: O(n)
+
+
+### Project 5
+
+###### Design
+This program implements single linked list but with the head pointing to the
+most recent added Block Node. The tail points to the oldest Block Node.
+
+To append, we add to the head node in O(1). When we want to print the node
+to a particular index, we traverse the BlockChain starting at the tail. This
+take O(n) to get to the nth node
+
+###### Time Complexity
+For the individual methods, the time complexity will differ. Here is the summary for each
+method:
+Block::calc_hash - O(1)	  // This is because it just takes one item and does a mathematical
+	    		     conversion of the input.
+Block::_print()  - O(1)   // This is constant time for each item
+Block::__init__  - O(1)   // This is constant time for each item
+
+
+BlockChain::__init__ - O(1)  // This is constant time for each item
+BlockChain::append   - O(n)  // For worse case, it will have to traverse n-items to place the
+                                last node on the chain
+		     - O(1)  // For best case, if no node exists, it is a one-time operation to
+		       	     	create the node
+BlockChain::print    - O(n)  // For worse case, it will have to traverse n-items to place the
+                                last node on the chain
+		     - O(1)  // For best case, if no node exists, it is a one-time operation to
+		       	     	create the node
+				
+###### Space Complexity
+For n-nodes in the BlockChain,
+
+Space complexity: O(n) 
+
+
+### Project 6
+
+###### Design
+
+The program performs union and intersection computation according to set theory.
+Given two linked lists, the union() function will return the total *unique*
+elements in the two lists. The intersection() function returns the *common*
+elements in the two lists. These functions are bundled in the unions_and_intersectons python script.
+
+The design is to use linked lists. A class linkedlistNode is created to contain
+the value. The class linkedList creates a link of these basic nodes of N-size.
+To do the calculation, convert the linked lists to python lists []. Then, type-cast to sets and perform
+the python set operations: union and intersection.
+
+Convert the results back into a linked list.
+
+###### Time Complexity
+The time complexity to compute the set operations is converting the m-elements
+of one list to sets and the other n-elements list to another [set].
+This conversion will take O(m+n) ~ O(n). Then, one converts the list[] into a set,
+which under the hood, the conversion takes O(n) because it cycles through
+all the n-elements.
+
+For the set operations, finding the union() of the two lists is simple use of set
+operation in python. Likewise, for the intersection of the two lists uses the set
+operation in python.
+
+For union(), O(n) ~ O(m) + O(n) ~ O(m+n) ~ O(n'), where n'~ m+n as we traverse
+the two lists and eliminate any duplicates for the return list.
+
+For intersection(), the operation is the same O(n), applying the same logic.
+This operation will take what's common from both lists, which results in
+smaller 'sub-setted' list.
+
+Time Complexity: O(n)
+
+###### Space Complexity
+The Space Complexity is similiar in logic to the time complexity.
+
+When converting the list, we're making a copy of the total elements,
+n' = m+n, therefore, O(n')
+When returning union(), this will still be O(n''), n'' = n' minus duplicates
+When return intersection(), this will be O(n'''), n''' < n''' unique elements
+and n''' < n'
+
+Therefore, total space complexity:
+O(n) + O(m) : Original lists
+O(n'): Set conversion
+O(n''): union
+O(n''') intersection
+-----------------------
+O(n)
+n~ n+m+n'+n''+n''' ~ n
+
+Space Complexity: O(n)
