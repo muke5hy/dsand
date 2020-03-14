@@ -103,10 +103,12 @@ if __name__ == "__main__":
 
     for i in element_2:
         linked_list_2.append(i)
-
-    print (union(linked_list_1,linked_list_2))
-    print (intersection(linked_list_1,linked_list_2))
-
+    
+    print("Test Case 1")
+    print ("Union ",union(linked_list_1,linked_list_2))
+    print ("intersection ",intersection(linked_list_1,linked_list_2))
+    print("\n")
+    
     # Test case 2
 
     linked_list_3 = LinkedList()
@@ -121,5 +123,27 @@ if __name__ == "__main__":
     for i in element_2:
         linked_list_4.append(i)
 
-    print (union(linked_list_3,linked_list_4))
-    print (intersection(linked_list_3,linked_list_4))
+    print("Test Case 2")
+    print ("Union ",union(linked_list_3,linked_list_4))
+    print ("intersection ",intersection(linked_list_3,linked_list_4))
+    print("\n")
+    
+    # Test case 3
+
+    linked_list_5 = LinkedList()
+    linked_list_6 = LinkedList()
+
+    element_1 = []
+    element_2 = [1,7,8,9,10,2,1]
+
+    for i in element_1:
+        linked_list_5.append(i)
+
+    for i in element_2:
+        linked_list_6.append(i)
+
+    print("Test Case 3")
+    print ("Union ",union(linked_list_5,linked_list_6))
+    print ("intersection ",intersection(linked_list_5,linked_list_6))
+    print("\n")
+    

@@ -35,13 +35,13 @@ Space complexity: O(n)
 ##### Design
 This program asks to find a directory within a tree and return true, if found. False, otherwise.
 The algorithm is to test each item for 'ls -l' status. If it is a directory, it must descend into
-that directory and recurse on this path, again, checking for file, directory or *.c program.
+that directory and recurse on this path, again, checking for file, directory or .c program.
 
 
 ##### Time Complexity
 The time complexity can be computed by the number of branches it needs to traverse. The algorithm
-cannot make assumptions or guesses on which subdirectory will have the *.c programs. Therefore,
-given m-subdirectories with n programs, it will test m+n items for either a file, a *.c program or
+cannot make assumptions or guesses on which subdirectory will have the .c programs. Therefore,
+given m-subdirectories with n programs, it will test m+n items for either a file, a .c program or
 a directory. The conditional test for 'ls -l' status is O(1), but the total number of conditional
 tests would be:
 
@@ -86,14 +86,14 @@ for the code in the decodes_dict() takes O(1).
 ##### Breakdown
 - O(nlogn) for tree traversal
 - O(n) for dictionary creation: character frequency, code and decode lookups
-= O(1) for lookup
+- O(1) for lookup
 
 ------------------
 
 O(n) + O(nlogn) + O(1)
 O(n)
 
-Time Complexity: O(n)
+Time Complexity: O(n) for worst case it will be O(nlogn)
 
 
 
@@ -105,7 +105,7 @@ Breakdown
 ------------
 O(n) + O(n*k) + O(n)
 
-Space Complexity: O(n)
+Space Complexity: O(n) for worst case O(n*k)
 
 
 ### Project 4
@@ -134,7 +134,7 @@ Time Complexity: O(n)
 
 ##### Space Complexity
 The class Group object has two lists: groups and users and just a variable to store the
-user's name. The list can vary by size n items.
+user's name. The list can vary by size n items. Also since is_user_in_group method is being called recursively we can have a Call Stack which will have O(n) space in worse case. 
 
 - O(n) for users
 - O(n) for groups
@@ -160,22 +160,19 @@ take O(n) to get to the nth node
 ##### Time Complexity
 For the individual methods, the time complexity will differ. Here is the summary for each
 method:
-- Block::calc_hash - O(1)	  // This is because it just takes one item and does a mathematical
-	    		     conversion of the input.
+- Block::calc_hash - O(1)  // This is because it just takes one item and does a mathematical conversion of the input.
 - Block::_print()  - O(1)   // This is constant time for each item
 - Block::__init__  - O(1)   // This is constant time for each item
 
 
-- BlockChain::__init__ - O(1)  // This is constant time for each item
-- BlockChain::append   - O(n)  // For worse case, it will have to traverse n-items to place the
-                                last node on the chain
-		     - O(1)  // For best case, if no node exists, it is a one-time operation to
-		       	     	create the node
-- BlockChain::print    - O(n)  // For worse case, it will have to traverse n-items to place the
-                                last node on the chain
-		     - O(1)  // For best case, if no node exists, it is a one-time operation to
-		       	     	create the node
-				
+- BlockChain::__init__ 
+    - O(1)  // This is constant time for each item
+- BlockChain::append   
+    - O(1)  // As no traversing is there it will take constant time
+- BlockChain::print    
+    - O(n)  // For worse case, it will have to traverse n-items to place the last node on the chain
+    - O(1)  // For best case, if no node exists, it is a one-time operation to create the node
+
 ##### Space Complexity
 For n-nodes in the BlockChain,
 

@@ -5,11 +5,9 @@ class Group(object):
         self.users = []       # list of string user
 
     def add_group(self, group):
-        if debug: print("[[add_group]]: {}".format(group))
         self.groups.append(group)
 
     def add_user(self,user):
-        if debug: print("[[add_user]]: {}".format(user))
         self.users.append(user)
 
     def get_groups(self):
@@ -25,26 +23,23 @@ class Group(object):
 def is_user_in_group(user, group, grp_queue = None):
 
     group_queue = []
-
+    
+    if not user:
+        print(f"No user to look for! {user}")
+        return False
+    
+    if not isinstance(group, Group):
+        return False
+    
     # Match user to group's name
     if user == group.get_name():
-        # print("user matches group name")
         return True
-    
-    # Match user to get_users
     elif user in group.get_users():
-        # print("user is in group's user list")
         return True
-    
-    # if Group's group list not empty, recurse 
     if len(group.get_groups()) == 0:
-        # print("group's group list is empty, return False")
         return False
     
     else:
-        
-        # print("group.name = {}".format(group.get_name()))
-        # print("Descend into Group's group at a time, group_list: {}".format(group.get_groups()))
         if grp_queue is None:
             grp_queue = group.get_groups()
             return is_user_in_group(user, group, grp_queue)
@@ -63,3 +58,7 @@ if __name__ == "__main__":
 
     child.add_group(sub_child)
     parent.add_group(child)
+    
+    print(is_user_in_group("sub_child_user", parent))
+    print(is_user_in_group("sub_child_user2", parent))
+    print(is_user_in_group("", child))

@@ -14,41 +14,38 @@ def find_files(suffix, path):
        a list of paths
     """
 
-    cfiles_dir = []
-    path = os.getcwd() + "/" + path
-  
-    extension = re.findall(r'(\w+\.\w+$)', path)
-    #print(extension)
-    if len(extension) > 0:
-        print("Invalid path: {}".format(extension))
-        return None
-              
-    # If path does not exist, return False    
-    if not os.path.exists(path):
-        print("Path: {} does not exist!".format(path))
-        return None 
+    path_list = list()
 
-    for root, dirs, files in os.walk(path):
-        for file_name in files:
-            if fnmatch.fnmatch(file_name, suffix):
-                if root not in cfiles_dir:
-                    cfiles_dir.append(root)
-
-    if len(cfiles_dir) == 0:
-        print("File(s): {} not found!".format(suffix))
-        return None
-    else:   
-        return cfiles_dir
+    try:
+        dir_path = os.listdir(path) 
+    except:
+        return [] 
+    
+    for item in dir_path:
+        full_path = os.path.join(path, item)
+        if os.path.isdir(full_path):
+            path_list += find_files(suffix, full_path)
+        elif os.path.isfile(full_path) and item.endswith(suffix):
+            path_list.append(path + "/" + item)
+    
+    return path_list
     
 if __name__ == "__main__":
     path = "testdir"
-    print(f"Path {path} === ", find_files("*.c", path), end='\n\n')
+    print(f"Path {path} === ", find_files(".c", path), end='\n\n')
 
     path = "testdir/subdir3"
-    print(f"Path {path} === ", find_files("*.c", path), end='\n\n')
+    print(f"Path {path} === ", find_files(".c", path), end='\n\n')
 
     path = "testdir/subdir4"
-    print(f"Path {path} === ", find_files("*.c", path), end='\n\n')
+    print(f"Path {path} === ", find_files(".c", path), end='\n\n')
 
     path = "testdir/test.h"
-    print(f"Path {path} === ", find_files("*.c", path), end='\n\n')
+    print(f"Path {path} === ", find_files(".h", path), end='\n\n')
+    
+    
+    path = "testdir"
+    print(f"Path {path} === ", find_files("", path), end='\n\n')
+    
+    path = ""
+    print(f"Path {path} === ", find_files(".h", path), end='\n\n')
