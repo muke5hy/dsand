@@ -83,24 +83,25 @@ encoding the text into binary code. Tree traversal for a binary tree is O(nlogn)
 Deconstructing the code involves parsing out the coded text which O(n) for each character. However, the lookup
 for the code in the decodes_dict() takes O(1).
 
-Breakdown
-O(nlogn) for tree traversal
-O(n) for dictionary creation: character frequency, code and decode lookups
-O(1) for lookup
+##### Breakdown
+- O(nlogn) for tree traversal
+- O(n) for dictionary creation: character frequency, code and decode lookups
+= O(1) for lookup
+
 ------------------
 
 O(n) + O(nlogn) + O(1)
 O(n)
 
 Time Complexity: O(n)
-     		      
 
 
-###### Space Complexity
+
+##### Space Complexity  
 Breakdown
- O(n) for character frequency lookup, including spaces
- O(n*k) for code and decode, where k = number of bits to represent the text character
- O(n) for binary tree to encapsulate all the characters in the text.
+- O(n) for character frequency lookup, including spaces
+- O(n*k) for code and decode, where k = number of bits to represent the text character
+- O(n) for binary tree to encapsulate all the characters in the text.
 ------------
 O(n) + O(n*k) + O(n)
 
