@@ -136,8 +136,8 @@ Time Complexity: O(n)
 The class Group object has two lists: groups and users and just a variable to store the
 user's name. The list can vary by size n items.
 
-O(n) for users
-O(n) for groups
+- O(n) for users
+- O(n) for groups
 ----------------
 O(n) + O(n)
 
@@ -221,10 +221,10 @@ Time Complexity: O(n)
 ##### Space Complexity
 The Space Complexity is similiar in logic to the time complexity.
 
-When converting the list, we're making a copy of the total elements,
+* When converting the list, we're making a copy of the total elements,
 n' = m+n, therefore, O(n')
-When returning union(), this will still be O(n''), n'' = n' minus duplicates
-When return intersection(), this will be O(n'''), n''' < n''' unique elements
+* When returning union(), this will still be O(n''), n'' = n' minus duplicates
+* When return intersection(), this will be O(n'''), n''' < n''' unique elements
 and n''' < n'
 
 Therefore, total space complexity:
