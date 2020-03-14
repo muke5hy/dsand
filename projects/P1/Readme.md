@@ -1,6 +1,6 @@
 ### Project 1
 
-###### Design
+##### Design
 This program updates the cache with value. It uses a hash map to  track the nodes in a doubly
 linked list. All the values are stored in a doubly linked list. The set() operation instantiates
 a new node in the doubly linked list and produces a key to track the value. The get() operation retrieves
@@ -15,14 +15,14 @@ remove the node from the tail node or perform a move operation of the existing n
 of the doubly linked list (queue).
 
 
-###### Time Complexity
+##### Time Complexity
 The time complexity is O(1) operation to get() or set() a value from the lru_cache, as a result of
 using a hash map, whose keys points to the node in the linked list.
 
 
 Time Complexity: O(1)
 
-###### Space Complexity
+##### Space Complexity
 The LRU cache stores an element per key in the hash map. Given n-keys, the storage is n-elements, thus space
 is O(n). Since the least used value is always removed and replaced by a new value, the number of elements
 stays constant.
@@ -32,13 +32,13 @@ Space complexity: O(n)
  
 ### Project 2
 
-###### Design
+##### Design
 This program asks to find a directory within a tree and return true, if found. False, otherwise.
 The algorithm is to test each item for 'ls -l' status. If it is a directory, it must descend into
 that directory and recurse on this path, again, checking for file, directory or *.c program.
 
 
-###### Time Complexity
+##### Time Complexity
 The time complexity can be computed by the number of branches it needs to traverse. The algorithm
 cannot make assumptions or guesses on which subdirectory will have the *.c programs. Therefore,
 given m-subdirectories with n programs, it will test m+n items for either a file, a *.c program or
@@ -52,7 +52,7 @@ Hence, O(n) ~ O(m+n)
 
 Time complexity: O(n)
 
-###### Space Complexity
+##### Space Complexity
 The space complexity is the list of directories, housing the *.c programs. Therefore, it is simply
 a list of O(n) space.
 
@@ -62,7 +62,7 @@ Space complexity: O(n)
 
 ### Project 3
 
-###### Design
+##### Design
 The huffman code takes a string and converts it into a binary code based on the frequency of each
 character. To this, the algorithm has HeapNode() class construct to store the character value
 and its respective frequency. Another construct, called class HuffmanCode() creates the
@@ -74,7 +74,7 @@ functions can tranverse the tree and perform the compression and decompression o
 given text string.
 
 
-###### Time Complexity
+##### Time Complexity
 Construction the frequency dictionary take O(n).
 
 Constructing the heap tree takes O(n). To compress, it is literally traversing the tree and
@@ -97,7 +97,7 @@ Time Complexity: O(n)
 
 
 
-##### Space Complexity  
+#### Space Complexity  
 Breakdown
 - O(n) for character frequency lookup, including spaces
 - O(n*k) for code and decode, where k = number of bits to represent the text character
@@ -111,12 +111,12 @@ Space Complexity: O(n)
 ### Project 4
 
 
-###### Design
+##### Design
 This program asks if a user is part of a group and returns a boolean, indicating true if user is in group,
 and false otherwise. The program creates tree whose parent includes child nodes. The child node may under
 another parent node.
 
-###### Time Complexity
+##### Time Complexity
 Breakdown
 O(1) -         Constructing the graph user by user, which is just appending to the list
 O(1) -	       Getting or retrieving group/user list information will take anywhere between
@@ -134,7 +134,7 @@ O(n) + O(1) + O(1)
 Time Complexity: O(n) 
 
 
-###### Space Complexity
+##### Space Complexity
 The class Group object has two lists: groups and users and just a variable to store the
 user's name. The list can vary by size n items.
 
@@ -151,7 +151,7 @@ Space Complexity: O(n)
 
 ### Project 5
 
-###### Design
+##### Design
 This program implements single linked list but with the head pointing to the
 most recent added Block Node. The tail points to the oldest Block Node.
 
@@ -159,7 +159,7 @@ To append, we add to the head node in O(1). When we want to print the node
 to a particular index, we traverse the BlockChain starting at the tail. This
 take O(n) to get to the nth node
 
-###### Time Complexity
+##### Time Complexity
 For the individual methods, the time complexity will differ. Here is the summary for each
 method:
 Block::calc_hash - O(1)	  // This is because it just takes one item and does a mathematical
@@ -178,7 +178,7 @@ BlockChain::print    - O(n)  // For worse case, it will have to traverse n-items
 		     - O(1)  // For best case, if no node exists, it is a one-time operation to
 		       	     	create the node
 				
-###### Space Complexity
+##### Space Complexity
 For n-nodes in the BlockChain,
 
 Space complexity: O(n) 
@@ -186,7 +186,7 @@ Space complexity: O(n)
 
 ### Project 6
 
-###### Design
+##### Design
 
 The program performs union and intersection computation according to set theory.
 Given two linked lists, the union() function will return the total *unique*
@@ -200,7 +200,7 @@ the python set operations: union and intersection.
 
 Convert the results back into a linked list.
 
-###### Time Complexity
+##### Time Complexity
 The time complexity to compute the set operations is converting the m-elements
 of one list to sets and the other n-elements list to another [set].
 This conversion will take O(m+n) ~ O(n). Then, one converts the list[] into a set,
@@ -220,7 +220,7 @@ smaller 'sub-setted' list.
 
 Time Complexity: O(n)
 
-###### Space Complexity
+##### Space Complexity
 The Space Complexity is similiar in logic to the time complexity.
 
 When converting the list, we're making a copy of the total elements,
