@@ -111,21 +111,19 @@ Space Complexity: O(n)
 ### Project 4
 
 
-##### Design
+##### Design  
 This program asks if a user is part of a group and returns a boolean, indicating true if user is in group,
 and false otherwise. The program creates tree whose parent includes child nodes. The child node may under
 another parent node.
 
-##### Time Complexity
+##### Time Complexity  
 Breakdown
-O(1) -         Constructing the graph user by user, which is just appending to the list
-O(1) -	       Getting or retrieving group/user list information will take anywhere between
-               best case lookup of only one retrieval in the list, or O(n) going to the last
-	       item of the list. 
-O(1) to O(n) - Querying if user is in group list may be constant time retrieval - depending if it's
-     	       the only user in the group or user list. However, if it's not found in its most
-	       immediate group, it will check all the other groups' group lists, which the number of groups
-	       can vary. Worst case, it will check all groups to find user in that list.
+- O(1) Constructing the graph user by user, which is just appending to the list
+- O(1) Getting or retrieving group/user list information will take anywhere between best case lookup of only one retrieval in the list, or O(n) going to the last item of the list. 
+- O(1) to O(n) - Querying if user is in group list may be constant time retrieval - depending 
+  - if it's the only user in the group or user list. However, if it's not found in its most
+  - immediate group, it will check all the other groups' group lists, which the number of groups can vary. 
+  - Worst case, it will check all groups to find user in that list.
 ----------
 O(n) + O(1) + O(1)
 
@@ -162,18 +160,18 @@ take O(n) to get to the nth node
 ##### Time Complexity
 For the individual methods, the time complexity will differ. Here is the summary for each
 method:
-Block::calc_hash - O(1)	  // This is because it just takes one item and does a mathematical
+- Block::calc_hash - O(1)	  // This is because it just takes one item and does a mathematical
 	    		     conversion of the input.
-Block::_print()  - O(1)   // This is constant time for each item
-Block::__init__  - O(1)   // This is constant time for each item
+- Block::_print()  - O(1)   // This is constant time for each item
+- Block::__init__  - O(1)   // This is constant time for each item
 
 
-BlockChain::__init__ - O(1)  // This is constant time for each item
-BlockChain::append   - O(n)  // For worse case, it will have to traverse n-items to place the
+- BlockChain::__init__ - O(1)  // This is constant time for each item
+- BlockChain::append   - O(n)  // For worse case, it will have to traverse n-items to place the
                                 last node on the chain
 		     - O(1)  // For best case, if no node exists, it is a one-time operation to
 		       	     	create the node
-BlockChain::print    - O(n)  // For worse case, it will have to traverse n-items to place the
+- BlockChain::print    - O(n)  // For worse case, it will have to traverse n-items to place the
                                 last node on the chain
 		     - O(1)  // For best case, if no node exists, it is a one-time operation to
 		       	     	create the node
@@ -230,10 +228,10 @@ When return intersection(), this will be O(n'''), n''' < n''' unique elements
 and n''' < n'
 
 Therefore, total space complexity:
-O(n) + O(m) : Original lists
-O(n'): Set conversion
-O(n''): union
-O(n''') intersection
+- O(n) + O(m) : Original lists
+- O(n'): Set conversion
+- O(n''): union
+- O(n''') intersection
 -----------------------
 O(n)
 n~ n+m+n'+n''+n''' ~ n
